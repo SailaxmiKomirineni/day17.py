@@ -1,0 +1,75 @@
+#Dunder Methods
+#Inheritance
+
+class vehicle:
+  def __init__ (self, selfdriven, autogear, adsystem):
+    self.selfdriven = selfdriven
+    self.autogear = autogear
+    self.adsystem = adsystem
+nissan = vehicle(False, 'yes', 'yes')
+print(nissan)
+
+OUTPUT:-   <__main__.vehicle object at 0x7dee4f3a15a0> // Vehicle memory position is returned
+
+=> To print data we use Dunder Methods.
+=> Dunder Methods is also called as magic methods or speacial methods or double underscore Methods.
+=> By using Dunder Methods we can create relationship between objects and in built methods.
+=> inbuilt method = print , len, etc.
+
+class vehicle:
+  def __init__ (self, selfdriven, autogear, adsystem):
+    self.selfdriven = selfdriven
+    self.autogear = autogear
+    self.adsystem = adsystem
+  def __str__(self):                      => Dunder method (__str__) in built
+    return f"{self.selfdriven}, {self.autogear}, {self.adsystem}"
+nissan = vehicle(False, 'yes', 'yes')
+print(nissan)
+
+OUTPUT:-   False, yes, yes
+
+class vehicle:
+  def __init__ (self, selfdriven, autogear, adsystem):
+    self.selfdriven = selfdriven
+    self.autogear = autogear
+    self.adsystem = adsystem
+  def __str__(self):
+    return f"{self.selfdriven}, {self.autogear}, {self.adsystem}"
+nissan = vehicle(False, 'yes', 'yes')
+tesla =  vehicle(True, 'no', 'yes')
+
+print(nissan)
+print(nissan==tesla) => use equal to Dunder method otherwise it shows 'false'
+print(nissan==kia)
+print(ford==kia)
+
+OUTPUT:-   False, yes, yes
+           False
+           False
+           False
+
+class vehicle:
+  def __init__ (self, selfdriven, autogear, adsystem):
+    self.selfdriven = selfdriven
+    self.autogear = autogear
+    self.adsystem = adsystem
+  def __str__(self):
+    return f"{self.selfdriven}, {self.autogear}, {self.adsystem}"
+  def __eq__(self, others):
+    return self.selfdriven==others.selfdriven and self.autogear==others.autogear and self.adsystem==others.adsystem
+nissan = vehicle(False, 'yes', 'yes')
+tesla =  vehicle(True, 'no', 'yes')
+kia = vehicle(False, 'yes', 'yes')
+ford = vehicle(False, 'yes', 'yes')
+print(nissan)
+print(nissan==tesla)
+print(nissan==kia)
+print(ford==kia)
+print(len(kia))   =>type error
+
+OUTPUT:-    False, yes, yes
+            False
+            True
+            True
+            TypeError: object of type 'vehicle' has no len()
+
